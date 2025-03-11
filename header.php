@@ -61,12 +61,12 @@
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">Dropdown</a>
           <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">Asie</a>
-            <a class="dropdown-item" href="#">Afrique</a>
-            <a class="dropdown-item" href="#">Amerique Du Nord</a>
-            <a class="dropdown-item" href="#">Antartique</a>
-            <a class="dropdown-item" href="#">Europe</a>
-            <a class="dropdown-item" href="#">Oceanie</a>
+            <a class="dropdown-item" href="index2.php?name=Asia">Asie</a>
+            <a class="dropdown-item" href="index2.php?name=Africa">Afrique</a>
+            <a class="dropdown-item" href="index2.php?name=North America">Amerique Du Nord</a>
+            <a class="dropdown-item" href="index2.php?name=Antarctica">Antartique</a>
+            <a class="dropdown-item" href="index2.php?name=Europe">Europe</a>
+            <a class="dropdown-item" href="index2.php?name=Oceania">Oceanie</a>
           </div>
         </li>
       </ul>
