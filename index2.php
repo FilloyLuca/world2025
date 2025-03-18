@@ -16,7 +16,10 @@
 <?php  require_once 'header.php'; ?>
 <?php
 
+
 require_once 'inc/manager-db.php';
+/*
+//Ma partie
 //$desPays = getCountriesByContinent($continent);
 //$continent = isset($_GET['name']);
 if ( isset($_GET['name']) AND !empty($_GET['name'])){ 
@@ -24,70 +27,61 @@ if ( isset($_GET['name']) AND !empty($_GET['name'])){
   $desPays = getCountriesByContinent($continent); 
 }
 //$desPays = getCountriesByContinent($continent);
+*/
+
+
+//Dropdown Continent
+
+if (isset($_GET['name']) && !empty($_GET['name']) ){
+  $continent = ($_GET['name']);
+  $desPays = getCountriesByContinent($continent);
+}
+else{
+  $continent = "Monde";
+  $desPays = getAllCountries();
+}
+
+
+/*$continent = isset($_GET['continent']) ? $_GET['continent'] : 'Asia';
+$desPays = getCountriesByContinent($continent);*/
+
 
 ?>
 
 <main role="main" class="flex-shrink-0">
 
   <div class="container">
-    <h1>Les pays en <?=$continent?> </h1>
+    <h1> <?=$continent?> </h1>
     <div>
-     <table class="table">
+     <!--<table class="table">-->
+     <table id="example" class="table table-striped table-bordered" style="width:100%">
          <tr>
            <th>Code</td>
            <th>Nom</th>
-           <th>Capitale</th>
            <th>Population</th>
            <th>Region</th>
-           <th>Surface (km)</th>
-           <th>Espérance de vie</th>
-           <th>PIB</th>
-           <th>Nom local</th>
-           <th>Forme du Gouvernement</th>
-           <th>Dirigeant</th>
-
-
-
-
-
+           <th>Surface (km2)</th>
          </tr>
-       <?php
-       // $desPays est un tableau dont les éléments sont des objets représentant
-       // des caractéristiques d'un pays (en relation avec les colonnes de la table Country)
-          $pays = $desPays; ?>
-          <?php foreach($desPays as $pays) :  ?>
 
-          
-          <tr>
-            <td> <?php echo $pays->Code ?></td>
-            <td> <?php echo $pays->Name ?></td>
-            <td> <?php echo $pays->Capital ?></td>
-            <td> <?php echo $pays->Population ?></td>
-            <td> <?php echo $pays->Region ?></td>
-            <td> <?php echo $pays->SurfaceArea ?></td>
-            <td> <?php echo $pays->LifeExpectancy ?></td>
-            <td> <?php echo $pays->GNP ?></td>
-            <td> <?php echo $pays->LocalName ?></td>
-            <td> <?php echo $pays->GovernmentForm ?></td>
-            <td> <?php echo $pays->HeadOfState ?></td>
+       <!--$desPays est un tableau dont les éléments sont des objets représentant
+       des caractéristiques d'un pays (en relation avec les colonnes de la table Country)-->
 
-
-
-
-
-          </tr>
-          <?php 
-          endforeach
-          ?>
+            <?php foreach($desPays as $pays) :  ?>
+              <tr>
+                <td> <?php echo $pays->Code ?></td>
+                <td> <?php echo $pays->Name ?></td>
+                <td> <?php echo $pays->Population ?></td>
+                <td> <?php echo $pays->Region ?></td>
+                <td> <?php echo $pays->SurfaceArea ?></td>
+              </tr>
+            <?php  endforeach  ?>
+            <tr>
+              <!--<td colspan="5">Aucun pays trouvé.</td>-->
+            </tr>
      </table>
     </div>
-    <p>
-        <code>
-      <?php
-        var_dump($desPays);
-        ?>
-        </code>
-    </p>
+
+
     <section class="jumbotron">
       <div class="container">
         <h1 class="jumbotron-heading">Tableau d'objets</h1>

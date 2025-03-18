@@ -42,21 +42,41 @@ function getCountriesByContinent($continent)
     // de se prémunir d'injections SQL (des filtres seront appliqués)
     $prep->bindValue(':cont', $continent, PDO::PARAM_STR);
     $prep->execute();
-    // var_dump($prep);  pour du debug
-    // var_dump($continent);
+    //var_dump($prep);  //pour du debug
+    //var_dump($continent);
 
     // on retourne un tableau d'objets (car spécifié dans connect-db.php)
     return $prep->fetchAll();
 }
+
 
 /**
  * Obtenir la liste des pays
  *
  * @return liste d'objets
  */
-function getAllCountries()
+
+ 
+/*function getAllCountries()
 {
     global $pdo;
     $query = 'SELECT * FROM Country;';
     return $pdo->query($query)->fetchAll();
+}*/
+
+function getAllCountries()
+{
+    global $pdo;
+    $query = 'SELECT * FROM Country;';
+    $result = $pdo->query($query)->fetchAll();
+    //var_dump($result); // Ajoutez ceci pour vérifier les données
+    return $result;
+}
+
+
+function getContinent()
+{
+global $pdo;
+$query = 'SELECT DISTINCT continent FROM Country;';
+return $pdo->query($query)->fetchAll();
 }

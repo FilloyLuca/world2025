@@ -11,6 +11,12 @@
  * @license   http://opensource.org/licenses/gpl-license.php GNU Public License
  * @link      https://github.com/sio-melun/geoworld
  */
+
+ 
+  require_once 'inc/manager-db.php';
+  $lesContinents = getContinent() ;
+  $lesPays = getAllCountries();
+
 ?><!doctype html>
 <html lang="fr" class="h-100">
 <head>
@@ -22,7 +28,16 @@
   <!-- Bootstrap core CSS -->
   <link href="assets/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet">
 
+  <!--Partie du prof--->
+  
+
   <style>
+
+    .dropdown-menu{
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -33,6 +48,7 @@
         font-size: 3.5rem;
       }
     }
+
   </style>
   <!-- Custom styles for this template -->
   <link href="css/custom.css" rel="stylesheet">
@@ -57,6 +73,10 @@
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Disabled</a>
         </li>
+
+
+        <!----
+        //Ma partie en mode dur je crois ça s'apelle comme ça 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">Dropdown</a>
@@ -69,6 +89,31 @@
             <a class="dropdown-item" href="index2.php?name=Oceania">Oceanie</a>
           </div>
         </li>
+        ----->
+          
+        <!--Dropdown Pays-->
+        <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Pays</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                      <?php foreach($lesPays as $pays) : ?>
+                        <a class="dropdown-item" href="index2.php?name=<?= $pays->Name ; ?>"><?= $pays->Name; ?> </a>
+                      <?php endforeach ; ?>
+                    </div>
+        </li>
+
+        <!--Dropdown Continents-->
+        <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">Continents</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                      <?php foreach($lesContinents as $leContinent) : ?>
+                        <a class="dropdown-item" href="index2.php?name=<?= $leContinent->continent ; ?>"><?= $leContinent->continent; ?> </a>
+                      <?php endforeach ; ?>
+                    </div>
+        </li>
+
+                
       </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
