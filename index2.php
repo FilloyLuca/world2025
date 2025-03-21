@@ -70,7 +70,8 @@ $desPays = getCountriesByContinent($continent);*/
             <?php foreach($desPays as $pays) :  ?>
               <tr>
                 <td> <?php echo $pays->Name ?></td>
-                <td> <?php echo getCapitale($pays->Capital)->name ?></td>
+                <td> <?php if (getCapitale($pays->Capital) == null) echo "Pas de capitale"; 
+                  else echo getCapitale($pays->Capital)->name ?></td>
                 <td> <?php echo $pays->Population ?></td>
                 <td> <?php echo $pays->Region ?></td>
                 <td> <?php echo $pays->SurfaceArea ?></td>
