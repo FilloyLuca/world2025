@@ -69,7 +69,7 @@ $desPays = getCountriesByContinent($continent);*/
 
             <?php foreach($desPays as $pays) :  ?>
               <tr>
-                <td> <?php echo $pays->Name ?></td>
+                <td> <a href="detailsPays.php"> <?php echo $pays->Name ?> </a> </td>
                 <td> <?php if (getCapitale($pays->Capital) == null) echo "Pas de capitale"; 
                   else echo getCapitale($pays->Capital)->name ?></td>
                 <td> <?php echo $pays->Population ?></td>
@@ -82,7 +82,7 @@ $desPays = getCountriesByContinent($continent);*/
             </tr>
      </table>
     </div>
-
+    <!--
     <section class="jumbotron">
       <div class="container">
         <h1 class="jumbotron-heading">Tableau d'objets</h1>
@@ -105,7 +105,7 @@ $desPays = getCountriesByContinent($continent);*/
           </div>
       </div>
     </section>
-
+    --> 
   </div>
 </main>
 
