@@ -91,14 +91,14 @@ function getCapitale($countryId){
     return $prep->fetch();
 }
 
+
 function getDetailsPays($idPays){
     global $pdo;
+    var_dump($idPays);
     $query = 'SELECT * FROM Country WHERE id = :id;';
     $prep = $pdo->prepare($query);
     $prep->bindValue(':id', $idPays, PDO::PARAM_INT);
+    var_dump($result);
     $prep->execute();
-    //return $prep->fetch();
-    $result = $prep->fetchAll();
-    var_dump($result); // Vérifiez les données ici
-    return $result;
+    return $prep->fetch(PDO::FETCH_ASSOC);
 }

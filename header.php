@@ -76,7 +76,7 @@
 
 
         <!----
-        //Ma partie en mode dur je crois ça s'apelle comme ça 
+        //Ma partie en dur je crois ça s'apelle comme ça 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
              aria-expanded="false">Dropdown</a>

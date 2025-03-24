@@ -18,6 +18,7 @@
 
 
 require_once 'inc/manager-db.php';
+
 /*
 //Ma partie
 //$desPays = getCountriesByContinent($continent);
@@ -69,7 +70,7 @@ $desPays = getCountriesByContinent($continent);*/
 
             <?php foreach($desPays as $pays) :  ?>
               <tr>
-                <td> <a href="detailsPays.php"> <?php echo $pays->Name ?> </a> </td>
+                <td> <a href="detailsPays.php?id=<?php echo $pays->id?>"> <?php echo $pays->Name ?> </a> </td>
                 <td> <?php if (getCapitale($pays->Capital) == null) echo "Pas de capitale"; 
                   else echo getCapitale($pays->Capital)->name ?></td>
                 <td> <?php echo $pays->Population ?></td>
@@ -78,7 +79,7 @@ $desPays = getCountriesByContinent($continent);*/
               </tr>
             <?php  endforeach  ?>
             <tr>
-              <!--<td colspan="5">Aucun pays trouvé.</td>-->
+              <td colspan="5">Aucun pays trouvé.</td>
             </tr>
      </table>
     </div>

@@ -15,12 +15,25 @@
 
 <?php  
 require_once 'header.php'; 
+require_once 'inc/manager-db.php';
+
+var_dump($_GET);
 
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $idPays = ($_GET['id']);
+    var_dump($idPays); // Vérifiez l'ID récupéré
     $pays = getDetailsPays($idPays);    
-    $capitale = getCapitale($idPays);
+    $capitale = getCapitale($pays->Capital);
+    if ($pays) {
+        $desPays = [$pays];
+    } else {
+        $desPays = [];
+        echo "Aucun pays trouvé pour l'ID : $idPays.";
+    }
+} else {
+    echo "Paramètre 'id' manquant.";
+    $desPays = []; // Si aucun ID n'est fourni, on initialise $desPays comme un tableau vide
 }
 
 ?>
@@ -36,6 +49,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </head>
 
 <body>
+    <?php echo $pays->Name ?>
     <h1 class="centerTitle"><?= isset($pays->Name) ? htmlspecialchars($pays->Name) : 'Pays inconnu' ?></h1>
 
     <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -46,11 +60,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <th>Region</th>
         <th>Surface (km2)</th>
     </tr>
-
+    <?php var_dump($desPays); ?>
     <?php if (!empty($desPays)) : ?>
+        
         <?php foreach ($desPays as $pays) : ?>
             <tr>
-                <td><a href="detailsPays.php?id=<?= $pays->id ?>"><?= htmlspecialchars($pays->Name) ?></a></td>
+                <td><a htmlspecialchars($pays->Name) ?></a></td>
                 <td>
                     <?php 
                     $capitale = getCapitale($pays->Capital);
@@ -70,6 +85,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </table>
     
 </body>
+<?php require_once 'footer.php'; ?>
 </html>
 
 
