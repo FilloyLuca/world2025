@@ -25,12 +25,23 @@ require_once 'header.php';
     <title>GeoWorld</title>
     <!-- Inclure Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .jumbotron {
+            background-image: url('images/carteMonde.jpg'); /* Chemin vers l'image */
+            background-size: cover; /* L'image couvre tout l'arrière-plan */
+            background-position: center; /* Centre l'image */
+            background-repeat: no-repeat; /* Empêche la répétition de l'image */
+            color: white; /* Texte en blanc pour contraster avec l'image */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Ajoute une ombre au texte pour le rendre lisible */
+        }
+    </style>
 </head>
 <body>
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">Bienvenue sur GeoWorld</h1>
-            <p class="lead text-muted">Un projet éducatif pour apprendre le développement web.</p>
+            <!--<p class="lead text-muted">Un projet éducatif pour apprendre le développement web.</p>-->
+            <p>Un projet éducatif pour apprendre le développement web.</p>
             <p>
                 <a href="index2.php" class="btn btn-primary my-2">Voir un pays</a>
                 <a href="Map.php" class="btn btn-secondary my-2">Voir la carte</a>
