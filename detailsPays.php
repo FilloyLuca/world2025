@@ -17,12 +17,12 @@
 require_once 'header.php'; 
 require_once 'inc/manager-db.php';
 
-var_dump($_GET);
+//var_dump($_GET);
 
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $idPays = ($_GET['id']);
-    var_dump($idPays); // Vérifiez l'ID récupéré
+    //var_dump($idPays); // Vérifiez l'ID récupéré
     $pays = getDetailsPays($idPays);    
     $capitale = getCapitale($pays->Capital);
     if ($pays) {
@@ -53,36 +53,33 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     <h1 class="centerTitle"><?= isset($pays->Name) ? htmlspecialchars($pays->Name) : 'Pays inconnu' ?></h1>
 
     <table id="example" class="table table-striped table-bordered" style="width:100%">
-    <tr>
-        <th>Nom</th>
-        <th>Capitale</th>
-        <th>Population</th>
-        <th>Region</th>
-        <th>Surface (km2)</th>
-    </tr>
-    <?php var_dump($desPays); ?>
-    <?php if (!empty($desPays)) : ?>
-        
-        <?php foreach ($desPays as $pays) : ?>
-            <tr>
-                <td><a htmlspecialchars($pays->Name) ?></a></td>
-                <td>
-                    <?php 
-                    $capitale = getCapitale($pays->Capital);
-                    echo $capitale ? htmlspecialchars($capitale->name) : 'Pas de capitale'; 
-                    ?>
-                </td>
-                <td><?= htmlspecialchars($pays->Population) ?></td>
-                <td><?= htmlspecialchars($pays->Region) ?></td>
-                <td><?= htmlspecialchars($pays->SurfaceArea) ?></td>
-            </tr>
-        <?php endforeach; ?>
-    <?php else : ?>
+        <tr>
+            <th>Nom</th>
+            <th>Capitale</th>
+            <th>Population</th>
+            <th>Region</th>
+            <th>Surface (km2)</th>
+        </tr>
+        <?php //var_dump($desPays); ?>
+        <?php if (!empty($desPays)) : ?>
+        <tr>
+            <td> <?= htmlspecialchars($pays->Name) ?></td>
+            <td>
+                <?php 
+                $capitale = getCapitale($pays->Capital);
+                echo $capitale ? htmlspecialchars($capitale->name) : 'Pas de capitale'; 
+                ?>
+            </td>
+            <td><?= htmlspecialchars($pays->Population) ?></td>
+            <td><?= htmlspecialchars($pays->Region) ?></td>
+            <td><?= htmlspecialchars($pays->SurfaceArea) ?></td>
+        </tr>
+        <?php else : ?>
         <tr>
             <td colspan="5">Aucun pays trouvé.</td>
         </tr>
-    <?php endif; ?>
-</table>
+        <?php endif; ?>
+        </table>
     
 </body>
 <?php require_once 'footer.php'; ?>
