@@ -48,6 +48,14 @@ $langues = getlanguages($idPays)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails : <?= isset($pays->Name) ? htmlspecialchars($pays->Name) : 'Pays inconnu' ?></title>
     <link href="css/style.css" rel="stylesheet">
+    <!-- Inclure Bootstrap -->
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .langue{
+            margin-left: 20px;
+            margin-right: 800px;
+        }
+    </style>
    
 </head>
 
