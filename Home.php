@@ -32,7 +32,7 @@ require_once 'header.php';
             background-position: center; /* Centre l'image */
             background-repeat: no-repeat; /* Empêche la répétition de l'image */
             color: white; /* Texte en blanc pour contraster avec l'image */
-            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Ajoute une ombre au texte pour le rendre lisible */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Ajoute une ombre au texte pour le rendre lisible */
         }
     </style>
 </head>
