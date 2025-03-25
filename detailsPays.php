@@ -36,10 +36,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $desPays = []; // Si aucun ID n'est fourni, on initialise $desPays comme un tableau vide
 }
 
-
+$langues = getlanguages($idPays)
 ?>
 
-
+<   
 <!DOCTYPE html>
 
 <head>
@@ -47,24 +47,30 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Détails : <?= isset($pays->Name) ? htmlspecialchars($pays->Name) : 'Pays inconnu' ?></title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="css/style.css" rel="stylesheet">
+   
 </head>
 
 <body>
     <h1 class="centerTitle"><?= isset($pays->Name) ? htmlspecialchars($pays->Name) : 'Pays inconnu' ?></h1>
 
+<!-- Tableau des détails du pays -->
     <table id="example" class="table table-striped table-bordered" style="width:100%">
         <tr>
+            <th>Code</th>
             <th>Nom</th>
+            <th>Region</th>
             <th>Capitale</th>
             <th>Population</th>
-            <th>Region</th>
             <th>Surface (km2)</th>
+
         </tr>
         <?php //var_dump($desPays); ?>
         <?php if (!empty($desPays)) : ?>
         <tr>
+            <td><?= htmlspecialchars($pays->Code) ?></td>
             <td> <?= htmlspecialchars($pays->Name) ?></td>
+            <td><?= htmlspecialchars($pays->Region) ?></td>
             <td>
                 <?php 
                 $capitale = getCapitale($pays->Capital);
@@ -72,16 +78,50 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 ?>
             </td>
             <td><?= htmlspecialchars($pays->Population) ?></td>
-            <td><?= htmlspecialchars($pays->Region) ?></td>
             <td><?= htmlspecialchars($pays->SurfaceArea) ?></td>
+
         </tr>
-        <?php else : ?>
+            <?php else : ?>
         <tr>
             <td colspan="5">Aucun pays trouvé.</td>
         </tr>
-        <?php endif; ?>
+            <?php endif; ?>
         </table>
     
+    <br>
+
+    <h2>Langues parlées</h2>
+
+<!-- tableau des langues parlées dans le pays -->
+    <div class="langue">
+        <table class="table table-striped table-bordered" style="width:100%">
+        <tr>
+            <td>Nom</td>
+            <td>Pourcentage</td>
+        </tr>
+        <?php //var_dump($desPays); ?>
+        <?php if (!empty($langues)) : ?>
+            <?php foreach($langues as $langue) : ?>
+        <tr>
+            <td><?= htmlspecialchars($langue->Name) ?></td>
+            <td><?= htmlspecialchars($langue->Percentage) ?></td>
+        </tr>
+            <?php endforeach; ?>
+        <?php else : ?>
+        <tr>
+            <td colspan="5">Aucune langues trouvées pour ce pays.</td>
+        </tr>
+            <?php endif; ?>
+        </table>
+
+
+
+
+
+
+
+
+
 </body>
 <?php 
     require_once 'javascripts.php';

@@ -102,3 +102,13 @@ function getDetailsPays($idPays){
     $prep->execute();
     return $prep->fetch();
 }
+
+function getlanguages($idPays){
+    global $pdo;
+    $query = 'SELECT * FROM `CountryLanguage`,`Language` WHERE idCountry =:id;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':id', $idPays, PDO::PARAM_STR);
+    var_dump($result);
+    $prep->execute();
+    return $prep->fetchAll();
+}
