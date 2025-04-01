@@ -114,3 +114,17 @@ function getlanguages($idPays){
     $prep->execute();
     return $prep->fetchAll();
 }
+
+
+function searchCountry($name) {
+    global $pdo; // Utilise la connexion PDO existante
+
+    // Requête SQL pour rechercher un pays par nom
+    $query = 'SELECT * FROM Country WHERE Name LIKE :Name;';
+    $prep = $pdo->prepare($query);
+    $prep->bindValue(':Name', $name, PDO::PARAM_STR);
+    $prep->execute();
+
+    // Retourne tous les résultats
+    return $prep->fetch();
+}

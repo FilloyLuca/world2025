@@ -102,7 +102,6 @@
                     aria-expanded="false">Pays</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown01">
                       <?php foreach($lesPays as $pays) : ?>
-                        
                         <a class="dropdown-item" href="detailsPays.php?name=<?= $pays->Name ; ?>"><?= $pays->Name; ?> </a>
                       <?php endforeach ; ?>
                     </div>
@@ -134,8 +133,8 @@
           </a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <form class="form-inline my-2 my-lg-0" action="search.php" method="GET">
+        <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search" aria-label="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
