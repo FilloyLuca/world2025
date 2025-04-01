@@ -106,11 +106,11 @@ function getDetailsPays($idPays){
 
 function getlanguages($idPays){
     global $pdo;
-    $query = 'SELECT * FROM `CountryLanguage`,`Language` WHERE idCountry =:id;';
+    //$query = 'SELECT * FROM `CountryLanguage`,`Language` WHERE idCountry =:id;';
+    $query = 'SELECT * FROM `CountryLanguage`JOIN `Language` ON CountryLanguage.idLanguage = Language.id WHERE idCountry =:id';
     $prep = $pdo->prepare($query);
     $prep->bindValue(':id', $idPays, PDO::PARAM_STR);
     //var_dump($result);
     $prep->execute();
     return $prep->fetchAll();
 }
-    
