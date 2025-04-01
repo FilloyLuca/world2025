@@ -51,6 +51,9 @@ $langues = getlanguages($idPays)
     <!-- Inclure Bootstrap -->
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        .center {
+            text-align: center;
+        }
         .langue{
             margin-left: 20px;
             margin-right: 800px;
@@ -60,7 +63,15 @@ $langues = getlanguages($idPays)
 </head>
 
 <body>
-    <h1 class="centerTitle"><?= isset($pays->Name) ? htmlspecialchars($pays->Name) : 'Pays inconnu' ?></h1>
+   
+    <div class="container">
+    <?php  $drapeau = strtolower($pays->Code2);  
+        $source = "images/flag/$drapeau.png";
+        if (!file_exists($source)) {
+            $source = "images/flag/us.png";
+        }?>
+        <h1 class = "center"><?php echo $pays->Name; ?> <img src=<?php echo $source;?> alt="Drapeau de <?php echo $pays->Name; ?>"></h1>
+    </div>
 
 <!-- Tableau des détails du pays -->
     <table id="example" class="table table-striped table-bordered" style="width:100%">
