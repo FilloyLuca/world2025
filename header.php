@@ -28,9 +28,6 @@
   <!-- Bootstrap core CSS -->
   <link href="assets/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!--Partie du prof--->
-  
-
   <style>
 
     .dropdown-menu{
@@ -50,6 +47,7 @@
     }
 
   </style>
+
   <!-- Custom styles for this template -->
   <link href="css/custom.css" rel="stylesheet">
 </head>
@@ -66,7 +64,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <!--<a class="nav-link" href="Map.php">Map <span class="sr-only">(current)</span></a>-->
-          <a class="nav-link" href="mapWorld.php">Map <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="Map.php">Map <span class="sr-only">(current)</span></a>
         </li>
         <!--
         <li class="nav-item">

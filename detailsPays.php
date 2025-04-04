@@ -156,7 +156,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                         <?php foreach($langues as $langue) : ?>
                         <tr>
                             <td class="col-pourcentage"><?= htmlspecialchars($langue->Name) ?></td>
-                            <td class="col-pourcentage"><?= htmlspecialchars($langue->Percentage) ?></td>
+                            <td class="col-pourcentage"><?= htmlspecialchars($langue->Percentage) ?> %</td>
                         </tr>
                         <?php endforeach; ?>
                     <?php else : ?>
